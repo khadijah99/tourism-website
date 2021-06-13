@@ -19,6 +19,13 @@ var hotelSchema = new schema({
         type: mongoose.Types.ObjectId,
         ref : 'Room'
 
-    }]
+    }],
+
+    bookings : [{
+        type : mongoose.Types.ObjectId,
+        ref : 'HotelBookings'
+    }],
+
+    facilities : [String],
 });
 module.exports = mongoose.model('Hotel', hotelSchema);
