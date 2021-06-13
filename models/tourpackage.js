@@ -16,16 +16,20 @@ var packageSchema = new schema({
         required: true
     },
 
-    restaurantBooking : [{
+    restaurant : [{
         type: mongoose.Types.ObjectId,
-        ref : 'RestaurantBookings'
+        ref : 'Restaurant'
 
     }],
 
-    bookings : [{
+    hotel : [{
         type : mongoose.Types.ObjectId,
-        ref : 'HotelBookings'
+        ref : 'Hotel'
     }],
+
+    price :{
+        type : Number
+    }
 
     
 });
