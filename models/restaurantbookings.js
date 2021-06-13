@@ -4,10 +4,6 @@ var schema = mongoose.Schema;
 
 var restaurantBookingsSchema = new schema({
    
-    Id: {
-        type: String,
-        required: true,
-    },
     date: {
         type: String,
         required: true
@@ -26,4 +22,4 @@ var restaurantBookingsSchema = new schema({
 
     
 });
-module.exports = mongoose.model('RestaurantBookings', restaurantBookings);
+module.exports = mongoose.model('RestaurantBookings', restaurantBookingsSchema);
