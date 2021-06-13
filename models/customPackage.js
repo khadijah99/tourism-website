@@ -2,13 +2,13 @@ var mongoose = require('mongoose');
 
 var schema = mongoose.Schema;
 
-var packageSchema = new schema({
-    name: {
+var customPackageSchema = new schema({
+    packageName: {
         type: String,
         required: true,
     },
 
-    locations: [{
+    locationsToVisit: [{
         type: String,
         required: true,
     }],
@@ -18,21 +18,28 @@ var packageSchema = new schema({
         required: true
     },
 
-    restaurantID : [{
+    touristID : [{
         type: mongoose.Types.ObjectId,
-        ref : 'Restaurant'
+        ref : 'Tourist'
+
+    }],
+
+    restaurantBookingID : [{
+        type: mongoose.Types.ObjectId,
+        ref : 'RestaurantBookings'
 
     }],
 
     hotelBookingID : [{
         type : mongoose.Types.ObjectId,
-        ref : 'Hotel'
+        ref : 'HotelBookings'
     }],
 
-    transportID : [{
+    transportBookingID : [{
         type : mongoose.Types.ObjectId,
-        ref : 'Transport'
+        ref : 'TransportBookings'
     }],
-        
+
+    
 });
-module.exports = mongoose.model('Package', packageSchema);
+module.exports = mongoose.model('CustomPackage', customPackageSchema);

@@ -3,29 +3,14 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 var eventBookingsSchema = new schema({
-   
 
-    event : {
+    eventID : {
         ref : 'Event'
     },
 
-    city: {
-        type: String,
-        required: true
-    },
-
-    address: {
-        type: String,
-        required: true,
-    },
-
-    customer :{
+    customerID :{
         ref : 'Tourist'
     },
-    
-
    
-
-    
 });
 module.exports = mongoose.model('EventBookings', hotelSchema);

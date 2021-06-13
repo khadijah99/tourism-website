@@ -19,7 +19,6 @@ var restaurantBookingsSchema = new schema({
         ref : 'Tourist'
 
     },
-
-    
+       
 });
 module.exports = mongoose.model('RestaurantBookings', restaurantBookingsSchema);
