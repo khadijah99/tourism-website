@@ -3,32 +3,32 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 var tourPackageBookingSchema = new schema({
-    
 
-    customer : {
-        ref : 'Tourist'
+
+    customer: {
+        ref: 'Tourist'
     },
 
-    restaurantBookings : [{
+    restaurantBookings: [{
         type: mongoose.Types.ObjectId,
-        ref : 'RestaurantBookings'
+        ref: 'RestaurantBookings'
 
     }],
 
-    
-    hotelBookings : [{
-        type : mongoose.Types.ObjectId,
-        ref : 'HotelBookings'
+
+    hotelBookings: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'HotelBookings'
     }],
 
-    transportBookings : [{
-        ref : 'TransportBookings'
-     } ],
+    transportBookings: [{
+        ref: 'TransportBookings'
+    }],
 
-     eventBookings: [{
-         ref : 'EventBookings'
-     }]
+    eventBookings: [{
+        ref: 'EventBookings'
+    }]
 
-    
+
 });
 module.exports = mongoose.model('TourPackageBookings', tourPackageBooking);
