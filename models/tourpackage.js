@@ -7,6 +7,10 @@ var packageSchema = new schema({
         type: String,
         required: true,
     },
+    touristManager : {
+        type : mongoose.Types.ObjectId,
+        ref : 'TouristManager'
+    },
 
     locations: [{
         type: String,

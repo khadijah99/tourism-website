@@ -4,7 +4,7 @@ var schema = mongoose.Schema;
 
 var hotelBookingsSchema = new schema({
 
-    roomID :{
+    roomId :{
         type : mongoose.Types.ObjectId,
         ref : 'Room'
     },
@@ -12,13 +12,15 @@ var hotelBookingsSchema = new schema({
         type: String,
         required: true
     },
-    customerID : {
-        type: mongoose.Types.ObjectId,
-        ref : 'Tourist'
+    customerId : {
+        type : String
 
     },
-
-    facilities : [String],
+     hotelId : {
+        type : mongoose.Types.ObjectId,
+        ref : 'Hotel'
+     }   
+   
 });
 module.exports = mongoose.model('HotelBookings', hotelBookingsSchema);
   

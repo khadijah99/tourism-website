@@ -6,6 +6,10 @@ var transportSchema = new Schema({
     type: String,
     required: true,
   },
+  transportManager : {
+    type : String,
+    
+},
   price: {
     type: String,
     required: true,

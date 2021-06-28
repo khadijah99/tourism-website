@@ -7,6 +7,10 @@ var hotelSchema = new schema({
         type: String,
         required: true,
     },
+    hotelManager : {
+        type : String
+        
+    },
     address: {
         type: String,
         required: true,
@@ -20,6 +24,13 @@ var hotelSchema = new schema({
         ref : 'Room'
 
     }],
+    images : [
+        {
+            type: String,
+            required: true
+        }
+
+    ],
 
     bookings : [{
         type : mongoose.Types.ObjectId,

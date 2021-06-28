@@ -7,6 +7,10 @@ var eventSchema = new schema({
         type: String,
         required: true,
     },
+    eventManager : {
+        type : mongoose.Types.ObjectId,
+        ref : 'EventManager'
+    },
     address: {
         type: String,
         required: true,
