@@ -12,11 +12,13 @@ const EventManager = require('../models/eventManager');
 var cors = require('cors')
 var bodyParser = require('body-parser');
 
-
+var CustomerRoute = require('./tourist')
 // Setting up basic middleware for all Express requests
 router.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
 router.use(bodyParser.json()); // Send JSON responses
 router.use(cors());
+
+router.use("/",CustomerRoute );
 
 mongoose.connect(uri, { useNewUrlParser: true }, function (err) {
     if (err) {
@@ -59,12 +61,11 @@ router.get('/gethotelsByManagerId/:id', function (req, res, next) {
             res.json(results);
         }, (err) => next(err))
         .catch((err) => next(err));
-
 });
 
 
 router.get('/gethotelByHotelId/:id', function (req, res, next) {
-    Hotel.findById(req.params.id)
+    Hotel.find({ hotelManager:  req.params.id})
         .then((results) => {
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
@@ -75,7 +76,7 @@ router.get('/gethotelByHotelId/:id', function (req, res, next) {
 });
 
 router.get('/hotelrooms/:id', function (req, res, next) {
-    Room.find({ _id: req.params.id }).sort('number').exec(function (error, results) {
+    Room.find({ hotelManager: req.params.id }).sort('number').exec(function (error, results) {
         if (error) {
             return next(error);
         }
@@ -87,6 +88,26 @@ router.get('/hotelrooms/:id', function (req, res, next) {
 
 router.get('/hotel/bookings/:hotelId', function (req, res, next) {
     HotelBooking.find({ hotelId: req.params.hotelId }).sort('number').exec(function (error, results) {
+        if (error) {
+            return next(error);
+        }
+        // Respond with valid data
+        res.json(results);
+    });
+});
+
+router.delete("/hotel/bookingCancel/:bookingId", function (req, res, next) {
+     HotelBooking.deleteOne(
+    { _id: req.params.bookingId}, function (error, results) {
+    if (error) {
+    return next(error);
+    }
+    res.json(results); }
+    ); });
+
+
+router.get('/hotel/bookings/:hotelManagerId', function (req, res, next) {
+    HotelBooking.find({ hotelManager: req.params.hotelManagerId }).sort('number').exec(function (error, results) {
         if (error) {
             return next(error);
         }
@@ -137,9 +158,8 @@ router.post('/hotelManager/login', function (req, res, next) {
         res.setHeader('Content-Type', 'application/json');
         res.json(results);
     }
-    )
+   )
 }
-
 );
 
 router.post('/hotelManager/reg', function (req, res, next) {
@@ -157,7 +177,7 @@ router.post('/hotelManager/reg', function (req, res, next) {
 
 
 router.post('/addroom', function (req, res, next) {
-    Room.create(req.body.email)
+    Room.create(req.body)
         .then((result) => {
             console.log('Class has been Added ', result);
             res.statusCode = 200;

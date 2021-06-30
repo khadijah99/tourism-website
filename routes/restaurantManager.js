@@ -4,7 +4,7 @@ var Restaurant = require('../models/restaurant');
 
 var RestaurantBooking = require('../models/restaurantbookings')
 var RestaurantReview = require('../models/restaurantreviews')
-
+var  RestaurantManager = require('../models/restaurantManager')
 const uri = "mongodb+srv://user:user@cluster0.hbwmf.mongodb.net/Travler?retryWrites=true&w=majority";
 const mongoose = require("mongoose");
 
@@ -99,6 +99,33 @@ router.post('/addmenu', function(req, res, next) {
         .catch((err) => next(err));
 });
 
+router.post('/restaurantManager/login', function (req, res, next) {
+    var email = req.body.email
+    var pass = req.body.email
+    RestaurantManager.find({ email: email, password: pass }).exec(function (error, results) {
+        if (error) {
+            return next(error);
+        }
+        // Respond with valid data
+        res.json(results);
+    }
+    )
+}
+
+);
+
+router.post('/restaurantManager/reg', function (req, res, next) {
+    console.log(req.body);
+    RestaurantManager.create(req.body)
+        .then((hotel) => {
+            console.log('User has been Added ', hotel);
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.json(hotel);
+            
+        }, (err) => next(err))
+        .catch((err) => res("err"));
+});
 //PUT Operations
 
 
