@@ -4,24 +4,9 @@ var TourPackage = require('../models/tourpackage');
 
 var TourBooking = require('../models/restaurantbookings')
 var TourReview = require('../models/restaurantreviews')
-
-const uri = "mongodb+srv://user:user@cluster0.hbwmf.mongodb.net/Travler?retryWrites=true&w=majority";
-const mongoose = require("mongoose");
+var TourManager = require ('../models/tourManager')
 
 
-mongoose.connect(uri, { useNewUrlParser: true }, function (err) {
-    if (err) {
-        throw err;
-    }
-    else{
-        console.log("connection established");
-    }
-});
-router.listen(5556, (err) => {
-    if (err)
-        throw err;
-    
-});
 
 router.get('/', function(req, res, next) {
     res.send('respond with a resource');
@@ -77,7 +62,8 @@ router.get('/hotel/reviews/:hoteId', function(req, res, next) {
 
 
 //POST Operations
-router.post('/addrestaurant', function(req, res, next) {
+
+router.post('/createTour', function(req, res, next) {
     Restaurant.create(req.body)
         .then((hotel) => {
             console.log('Hotel has been Added ', hotel);
@@ -102,7 +88,7 @@ router.post('/addmenu', function(req, res, next) {
 router.post('/restaurantManager/login', function (req, res, next) {
     var email = req.body.email
     var pass = req.body.email
-    RestaurantManager.find({ email: email, password: pass }).exec(function (error, results) {
+    TourManager.find({ email: email, password: pass }).exec(function (error, results) {
         if (error) {
             return next(error);
         }
@@ -114,9 +100,9 @@ router.post('/restaurantManager/login', function (req, res, next) {
 
 );
 
-router.post('/restaurantManager/reg', function (req, res, next) {
+router.post('/tourManager/reg', function (req, res, next) {
     console.log(req.body);
-    RestaurantManager.create(req.body)
+    TourManager.create(req.body)
         .then((hotel) => {
             console.log('User has been Added ', hotel);
             res.statusCode = 200;
