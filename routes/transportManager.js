@@ -6,7 +6,7 @@ const uri = "mongodb+srv://user:user@cluster0.hbwmf.mongodb.net/Travler?retryWri
 const mongoose = require("mongoose");
 const Transport = require('../models/transport');
 const TransportBookings = require('../models/transportBookings');
-const TransportManager = require("../models/transportManagera")
+const TransportManager = require("../models/transportManager")
 
 
 
@@ -72,3 +72,5 @@ router.post('/getEventManagers', function (req, res, next) {
         .catch((err) => next(err));
 
 });
+
+module.exports = router;

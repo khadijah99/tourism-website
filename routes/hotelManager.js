@@ -3,7 +3,7 @@ var router = express();
 var Hotel = require('../models/hotel');
 var Room = require('../models/room')
 var HotelBooking = require('../models/hotelbookings')
-var HotelReview = require('../models/hotelreviews')
+// var HotelReview = require('../models/hotelreviews')
 var HotelManager = require('../models/hotelManager')
 
 const uri = "mongodb+srv://user:user@cluster0.kka0n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -14,8 +14,8 @@ var bodyParser = require('body-parser');
 
 var CustomerRoute = require('./tourist')
 var tourManager = require('./tourManager')
-var restaurantManager = require('./restaurantManager')
-var transportManager = require('./transportManager')
+ var restaurantManager = require('./restaurantManager')
+ var transportManager = require('./transportManager')
 
 // Setting up basic middleware for all Express requests
 router.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
@@ -24,8 +24,8 @@ router.use(cors());
 
 router.use("/",CustomerRoute );
 router.use("/",tourManager );
-router.use("/",restaurantManager );
-router.use("/",transportManager );
+ router.use("/",restaurantManager );
+ router.use("/",transportManager );
 
 mongoose.connect(uri, { useNewUrlParser: true }, function (err) {
     if (err) {

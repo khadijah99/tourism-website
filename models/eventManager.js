@@ -11,6 +11,10 @@ var eventManagerSchema = new Schema({
     required: true,
     unique : true
   },
+  password : {
+    type :String,
+    required : true,
+},
   address: {
     type: String,
     required: true,

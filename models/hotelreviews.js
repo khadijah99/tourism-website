@@ -9,11 +9,7 @@ var hotelReviewsSchema = new schema({
         required: true
     },
 
-<<<<<<< Updated upstream
-    hotelId : {
-=======
     hotelID : {
->>>>>>> Stashed changes
         type: mongoose.Types.ObjectId,
         ref : 'Hotel'
     },
