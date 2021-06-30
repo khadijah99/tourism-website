@@ -13,12 +13,15 @@ var cors = require('cors')
 var bodyParser = require('body-parser');
 
 var CustomerRoute = require('./tourist')
+var tourManager = require('./tourManager')
+
 // Setting up basic middleware for all Express requests
 router.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
 router.use(bodyParser.json()); // Send JSON responses
 router.use(cors());
 
 router.use("/",CustomerRoute );
+ router.use("/",tourManager );
 
 mongoose.connect(uri, { useNewUrlParser: true }, function (err) {
     if (err) {

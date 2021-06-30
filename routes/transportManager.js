@@ -8,19 +8,7 @@ const Transport = require('../models/transport');
 const TransportBookings = require('../models/transportBookings');
 const TransportManager = require("../models/transportManagera")
 
-mongoose.connect(uri, { useNewUrlParser: true }, function (err) {
-    if (err) {
-        throw err;
-    }
-    else {
-        console.log("connection established");
-    }
-});
-router.listen(5556, (err) => {
-    if (err)
-        throw err;
 
-});
 
 router.get('/getEventsByEventManager:/:id', function (req, res, next) {
     Events.find({ EventManager: req.params.id })

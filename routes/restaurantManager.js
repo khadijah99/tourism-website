@@ -9,19 +9,7 @@ const uri = "mongodb+srv://user:user@cluster0.hbwmf.mongodb.net/Travler?retryWri
 const mongoose = require("mongoose");
 
 
-mongoose.connect(uri, { useNewUrlParser: true }, function (err) {
-    if (err) {
-        throw err;
-    }
-    else{
-        console.log("connection established");
-    }
-});
-router.listen(5556, (err) => {
-    if (err)
-        throw err;
-    
-});
+
 
 router.get('/', function(req, res, next) {
     res.send('respond with a resource');
