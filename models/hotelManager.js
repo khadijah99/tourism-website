@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var uniqueValidator = require('mongoose-unique-validator');
 
 var Schema = mongoose.Schema;
 var hotelManagerSchema = new Schema({
@@ -9,11 +10,19 @@ var hotelManagerSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique : true
+  },
+  password : {
+      type :String,
+      required : true,
   },
   address: {
     type: String,
-    required: true,
+  
   },
 });
+
+hotelManagerSchema.plugin(uniqueValidator);
+
 
 module.exports = mongoose.model("HotelManager", hotelManagerSchema);

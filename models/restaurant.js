@@ -7,6 +7,11 @@ var restaurantSchema = new schema({
         type: String,
         required: true,
     },
+
+    restaurantManager : {
+        type : mongoose.Types.ObjectId,
+        ref : 'RestaurantManager'
+    },
     address: {
         type: String,
         required: true,

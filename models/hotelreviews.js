@@ -9,7 +9,7 @@ var hotelReviewsSchema = new schema({
         required: true
     },
 
-    restaurant : {
+    hotelId : {
         type: mongoose.Types.ObjectId,
         ref : 'Hotel'
     },

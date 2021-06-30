@@ -7,7 +7,8 @@ var transportSchema = new Schema({
     required: true,
   },
   transportManager : {
-    type : String,
+    type: mongoose.Types.ObjectId,
+    ref : 'TransportManager'
     
 },
   price: {

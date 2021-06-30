@@ -4,13 +4,17 @@ var schema = mongoose.Schema;
 
 var eventBookingsSchema = new schema({
 
-    eventID : {
+    eventId : {
         ref : 'Event'
     },
 
-    customerID :{
+    customerId :{
         ref : 'Tourist'
     },
+
+    status : {
+        type : String
+    }
    
 });
 module.exports = mongoose.model('EventBookings', hotelSchema);

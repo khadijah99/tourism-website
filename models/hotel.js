@@ -8,7 +8,8 @@ var hotelSchema = new schema({
         required: true,
     },
     hotelManager : {
-        type : String
+        type: mongoose.Types.ObjectId,
+        ref : 'HotelManager'
         
     },
     address: {
@@ -19,11 +20,7 @@ var hotelSchema = new schema({
         type: String,
         required: true
     },
-    rooms : [{
-        type: mongoose.Types.ObjectId,
-        ref : 'Room'
 
-    }],
     images : [
         {
             type: String,
@@ -32,11 +29,8 @@ var hotelSchema = new schema({
 
     ],
 
-    bookings : [{
-        type : mongoose.Types.ObjectId,
-        ref : 'HotelBookings'
-    }],
+  
 
-    facilities : [String],
+   
 });
 module.exports = mongoose.model('Hotel', hotelSchema);

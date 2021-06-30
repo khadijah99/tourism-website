@@ -4,6 +4,10 @@ var schema = mongoose.Schema;
 
 var roomSchema = new schema({
    
+    hotel : {
+        type: mongoose.Types.ObjectId,
+        ref : 'Hotel'
+    },
     description : {
         type : String,
         required : true

@@ -7,7 +7,7 @@ var packageSchema = new schema({
         type: String,
         required: true,
     },
-    touristManager : {
+    tourManager : {
         type : mongoose.Types.ObjectId,
         ref : 'TouristManager'
     },
