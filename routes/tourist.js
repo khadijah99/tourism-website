@@ -5,11 +5,10 @@ var Room = require('../models/room')
 var HotelBooking = require('../models/hotelbookings')
 var hotelReview = require('../models/hotelreviews')
 const Events = require('../models/event');
+const Tourist = require('../models/tourist')
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
 
 
 router.get('/hotelsAll', function(req, res, next) {
@@ -69,5 +68,51 @@ router.get('/getHotelsByCity/:city', function(req, res, next) {
   });
 });
 
+
+
+//POSTS
+
+router.post('/tourist/login', function (req, res, next) {
+  var email = req.body.email
+  var pass = req.body.email
+  Tourist.find({ email: email, password: pass }).exec(function (error, results) {
+      if (error) {
+          return next(error);
+      }
+      // Respond with valid data
+      res.json(results);
+  }
+  )
+}
+
+);
+
+router.post('/tourist/bookHotel', function (req, res, next) {
+  console.log(req.body)
+  HotelBooking.create(req.body)
+  .then((hotel) => {
+      console.log('User has been Added ', hotel);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.json(hotel);
+      
+  }, (err) => next(err))
+  .catch((err) => res("err"));
+}
+
+);
+
+router.post('/tourist/reg', function (req, res, next) {
+  console.log(req.body);
+  Tourist.create(req.body)
+      .then((hotel) => {
+          console.log('User has been Added ', hotel);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json');
+          res.json(hotel);
+          
+      }, (err) => next(err))
+      .catch((err) => res("err"));
+});
 
 module.exports = router;

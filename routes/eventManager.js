@@ -9,6 +9,8 @@ const EventBookings = require('../models/eventbookings');
 
 var EventManager = require('../models/eventManager')
 
+var cors = require('cors')
+var bodyParser = require('body-parser');
 mongoose.connect(uri, { useNewUrlParser: true }, function (err) {
     if (err) {
         throw err;

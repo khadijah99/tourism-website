@@ -13,11 +13,19 @@ var roomSchema = new schema({
         required : true
 
     },
+    hotelManager: {
+        type: mongoose.Types.ObjectId,
+        ref : 'HotelManager'
+    },
     Number: {
         type: String,
         required: true,
     },
     type: {
+        type: String,
+        required: true
+    },
+    status: {
         type: String,
         required: true
     },
@@ -34,4 +42,5 @@ var roomSchema = new schema({
         required : false
     }
 });
+
 module.exports = mongoose.model('Room', roomSchema);
