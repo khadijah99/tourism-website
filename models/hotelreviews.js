@@ -9,24 +9,27 @@ var hotelReviewsSchema = new schema({
         required: true
     },
 
+<<<<<<< Updated upstream
     hotelId : {
+=======
+    hotelID : {
+>>>>>>> Stashed changes
         type: mongoose.Types.ObjectId,
         ref : 'Hotel'
     },
 
-    customer : {
+    customerID : {
         type: mongoose.Types.ObjectId,
         ref : 'Tourist'
 
     },
 
-    review :{
+    rating :{
         type : String
     },
     comment : {
         type : String
     }
-
     
 });
 module.exports = mongoose.model('HotelReviews', hotelReviewsSchema  );
