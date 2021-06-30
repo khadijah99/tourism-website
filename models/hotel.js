@@ -26,11 +26,6 @@ var hotelSchema = new schema({
             type: String,
             required: true
         }
-
-    ],
-
-  
-
-   
+    ],   
 });
 module.exports = mongoose.model('Hotel', hotelSchema);

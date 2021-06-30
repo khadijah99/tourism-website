@@ -5,7 +5,7 @@ var Restaurant = require('../models/restaurant');
 var RestaurantBooking = require('../models/restaurantbookings')
 var RestaurantReview = require('../models/restaurantreviews')
 var  RestaurantManager = require('../models/restaurantManager')
-const uri = "mongodb+srv://user:user@cluster0.hbwmf.mongodb.net/Travler?retryWrites=true&w=majority";
+const uri = "mongodb+srv://user:user@cluster0.kka0n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const mongoose = require("mongoose");
 
 

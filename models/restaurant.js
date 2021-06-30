@@ -7,10 +7,10 @@ var restaurantSchema = new schema({
         type: String,
         required: true,
     },
-
     restaurantManager : {
-        type : mongoose.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref : 'RestaurantManager'
+        
     },
     address: {
         type: String,
@@ -20,13 +20,13 @@ var restaurantSchema = new schema({
         type: String,
         required: true
     },
-    
 
-    bookings : [{
-        type : mongoose.Types.ObjectId,
-        ref : 'RestaurantBookings'
-    }],
-
-    
+    images : [
+        {
+            type: String,
+            required: true
+        }
+    ],  
 });
+
 module.exports = mongoose.model('Restaurant', restaurantSchema);

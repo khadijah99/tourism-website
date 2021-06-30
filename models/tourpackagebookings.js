@@ -3,8 +3,7 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 var tourPackageBookingSchema = new schema({
-
-
+    
     customer: {
         ref: 'Tourist'
     },
@@ -14,7 +13,6 @@ var tourPackageBookingSchema = new schema({
         ref: 'RestaurantBookings'
 
     }],
-
 
     hotelBookings: [{
         type: mongoose.Types.ObjectId,
@@ -28,7 +26,5 @@ var tourPackageBookingSchema = new schema({
     eventBookings: [{
         ref: 'EventBookings'
     }]
-
-
 });
 module.exports = mongoose.model('TourPackageBookings', tourPackageBooking);
