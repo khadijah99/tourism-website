@@ -9,16 +9,17 @@ var restaurantBookingsSchema = new schema({
         required: true
     },
 
-    restaurant : {
+    restaurantID : {
         type: mongoose.Types.ObjectId,
         ref : 'Restaurant'
     },
 
-    customer : {
+    customerID : {
         type: mongoose.Types.ObjectId,
         ref : 'Tourist'
-
     },
+
+    
        
 });
 module.exports = mongoose.model('RestaurantBookings', restaurantBookingsSchema);

@@ -6,7 +6,7 @@ var HotelBooking = require('../models/hotelbookings')
 var HotelReview = require('../models/hotelreviews')
 var HotelManager = require('../models/hotelManager')
 
-const uri = "mongodb+srv://user:user@cluster0.hbwmf.mongodb.net/Travler?retryWrites=true&w=majority";
+const uri = "mongodb+srv://user:user@cluster0.kka0n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const mongoose = require("mongoose");
 const EventManager = require('../models/eventManager');
 var cors = require('cors')
