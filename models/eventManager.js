@@ -1,24 +1,26 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose')
+//var uniqueValidator = require('mongoose-unique-validator')
 
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema
 var eventManagerSchema = new Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   email: {
     type: String,
     required: true,
-    unique : true
+    unique: true
   },
-  password : {
-    type :String,
-    required : true,
-},
-  address: {
+  password: {
     type: String,
-    required: true,
+    required: true
   },
-});
+  address: {
+    type: String
+  }
+})
 
-module.exports = mongoose.model("EventManager", eventManagerSchema);
+//eventManagerSchema.plugin(uniqueValidator)
+
+module.exports = mongoose.model('EventManager', eventManagerSchema)

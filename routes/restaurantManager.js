@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express()
 var Restaurant = require('../models/restaurant')
-
+var Table = require('../models/table')
 var RestaurantBooking = require('../models/restaurantbookings')
 var RestaurantReview = require('../models/restaurantreviews')
 var RestaurantManager = require('../models/restaurantManager')
@@ -12,6 +12,19 @@ const mongoose = require('mongoose')
 //GET Operations
 router.get('/getrestaurantByManagerId/:id', function (req, res, next) {
   Restaurant.find({ restaurantManager: req.params.id })
+    .then(
+      results => {
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json')
+        res.json(results)
+      },
+      err => next(err)
+    )
+    .catch(err => next(err))
+})
+
+router.get('/getTables/:id', function (req, res, next) {
+  Table.find({ restaurant: req.params.id })
     .then(
       results => {
         res.statusCode = 200
@@ -130,6 +143,15 @@ router.delete('/restaurants/deleteRestaurant/:restaurantId', function (
     error,
     results
   ) {
+    if (error) {
+      return next(error)
+    }
+    res.json(results)
+  })
+})
+
+router.delete('/deleteTable/:tableId', function (req, res, next) {
+  Table.deleteOne({ _id: req.params.tableId }, function (error, results) {
     if (error) {
       return next(error)
     }

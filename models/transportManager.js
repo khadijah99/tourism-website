@@ -1,24 +1,23 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose')
 
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema
 var transportManagerSchema = new Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   email: {
     type: String,
     required: true,
-    unique : true
+    unique: true
   },
-  password : {
-    type :String,
-    required : true,
-},
-  address: {
+  password: {
     type: String,
-    required: true,
+    required: true
   },
-});
+  address: {
+    type: String
+  }
+})
 
-module.exports = mongoose.model("TransportManager", transportManagerSchema);
+module.exports = mongoose.model('TransportManager', transportManagerSchema)

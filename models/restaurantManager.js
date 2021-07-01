@@ -1,4 +1,5 @@
 var mongoose = require('mongoose')
+var uniqueValidator = require('mongoose-unique-validator')
 
 var Schema = mongoose.Schema
 var restaurantManagerSchema = new Schema({
@@ -19,5 +20,5 @@ var restaurantManagerSchema = new Schema({
     type: String
   }
 })
-
+restaurantManagerSchema.plugin(uniqueValidator)
 module.exports = mongoose.model('RestaurantManager', restaurantManagerSchema)
