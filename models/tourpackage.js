@@ -7,36 +7,32 @@ var packageSchema = new schema({
         type: String,
         required: true,
     },
-    tourManager : {
-        type : mongoose.Types.ObjectId,
-        ref : 'TouristManager'
+    tourManager: {
+        type: mongoose.Types.ObjectId,
+        ref: 'TouristManager'
     },
 
-    locations: [{
+    destinationLocation: {
         type: String,
         required: true,
-    }],
+    },
 
     pickUpcity: {
         type: String,
         required: true
     },
 
-    restaurantID : [{
-        type: mongoose.Types.ObjectId,
-        ref : 'Restaurant'
-
+    features: [{
+        type: String
     }],
 
-    hotelBookingID : [{
-        type : mongoose.Types.ObjectId,
-        ref : 'Hotel'
-    }],
+    images: [
+        {
+            type: String
+        }
+    ]
 
-    transportID : [{
-        type : mongoose.Types.ObjectId,
-        ref : 'Transport'
-    }],
-        
+
+
 });
 module.exports = mongoose.model('Package', packageSchema);

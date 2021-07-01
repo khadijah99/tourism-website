@@ -4,6 +4,9 @@ var Event = require('../models/event')
 //var EventBooking = require('../models/eventbookings')
 var EventManager = require('../models/eventManager')
 
+var cors = require('cors')
+var bodyParser = require('body-parser')
+
 //GET Operations
 router.get('/geteventsByManagerId/:id', function (req, res, next) {
   Event.find({ eventManager: req.params.id })
@@ -40,6 +43,30 @@ router.post('/addevent', function (req, res, next) {
         res.statusCode = 200
         res.setHeader('Content-Type', 'application/json')
         res.json(hotel)
+      },
+      err => next(err)
+    )
+    .catch(err => next(err))
+})
+
+// router.get('/getEventsBookings:/:id', function(req, res, next) {
+//     Events.find({eventId : req.params.id})
+//         .then((results) => {
+//             res.statusCode = 200;
+//             res.setHeader('Content-Type', 'application/json');
+//             res.json(results);
+//         }, (err) => next(err))
+//         .catch((err) => next(err));
+
+// });
+
+router.post('/getEventManagers', function (req, res, next) {
+  EventManager.find({})
+    .then(
+      results => {
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json')
+        res.json(results)
       },
       err => next(err)
     )
