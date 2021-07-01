@@ -9,7 +9,8 @@ var Hotel = require('../models/hotel');
 var Restaurant = require('../models/restaurant')
 var PackageHotel = require('../models/tourPackageHotels')
 var PackageRestaurant = require('../models/tourPackageRestaurants')
-
+var Event = require('../models/event')
+var PackageEvent = require('../models/tourPackageEvent')
 
 router.get('/', function(req, res, next) {
     res.send('respond with a resource');
@@ -17,7 +18,15 @@ router.get('/', function(req, res, next) {
 });
 
 
-
+router.get('/getAllEvents', function(req, res, next) {
+   Event.find().exec(function(error, results) {
+         if (error) {
+             return next(error);
+         }
+         // Respond with valid data
+         res.json(results);
+     });
+ });
 
 router.get('/getToursByManagerId/:id', function(req, res, next) {
     Restaurant.find({   tourManager : req.params.id})
@@ -31,6 +40,15 @@ router.get('/getToursByManagerId/:id', function(req, res, next) {
 });
 
 
+router.get('/tourPackage/bookings/:Id', function(req, res, next) {
+    RestaurantBooking.find({restaurant : req.params.Id}).exec(function(error, results) {
+         if (error) {
+             return next(error);
+         }
+         // Respond with valid data
+         res.json(results);
+     });
+ });
 
 router.get('/tourPackage/bookings/:Id', function(req, res, next) {
    RestaurantBooking.find({restaurant : req.params.Id}).exec(function(error, results) {
@@ -112,17 +130,7 @@ router.post('/createTour', function(req, res, next) {
         .catch((err) => next(err));
 });
 
-router.post('/addmenu', function(req, res, next) {
-    Room.create(req.body)
-        .then((result) => {
-            console.log('Class has been Added ', result);
-            res.statusCode = 200;
-            res.setHeader('Content-Type', 'application/json');
-            res.json(result);
-        }, (err) => next(err))
-        .catch((err) => next(err));
-});
-var TourManager = require('../models/tourManager')
+
 
 router.get('/', function (req, res, next) {
   res.send('respond with a resource')
@@ -195,19 +203,6 @@ router.post('/createTour', function (req, res, next) {
     .catch(err => next(err))
 })
 
-router.post('/addmenu', function (req, res, next) {
-  Room.create(req.body)
-    .then(
-      result => {
-        console.log('Class has been Added ', result)
-        res.statusCode = 200
-        res.setHeader('Content-Type', 'application/json')
-        res.json(result)
-      },
-      err => next(err)
-    )
-    .catch(err => next(err))
-})
 
 
 
@@ -242,7 +237,24 @@ router.post('/tourManager/addHotelToPackage', function (req, res, next) {
 
 
 
+
+
 );
+
+
+router.post('/tourManager/addEventToPackage', function (req, res, next) {
+
+    PackageEvent.create(req.body)
+    .then((result) => {
+        console.log('Class has been Added ', result);
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(result);
+    }, (err) => next(err))
+    .catch((err) => next(err));
+}
+);
+
 
 router.post('/tourManager/addRestaurantToPackage', function (req, res, next) {
 
