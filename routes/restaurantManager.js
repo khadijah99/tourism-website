@@ -87,7 +87,7 @@ router.post('/addmenu', function(req, res, next) {
         .catch((err) => next(err));
 });
 
-router.post('/restaurantManager', function (req, res, next) {
+router.post('/restaurantManager/login', function (req, res, next) {
     var email = req.body.email
     var pass = req.body.password
     console.log(email)

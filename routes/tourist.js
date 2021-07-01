@@ -6,6 +6,8 @@ var HotelBooking = require('../models/hotelbookings')
 var hotelReview = require('../models/hotelreviews')
 const Events = require('../models/event');
 const Tourist = require('../models/tourist')
+var HotelFav = require('../models/favoriteHotel')
+var RestaurantFav = require('../models/favoriteRestaurant')
 
 /* GET users listing. */
 
@@ -114,5 +116,35 @@ router.post('/tourist/reg', function (req, res, next) {
       }, (err) => next(err))
       .catch((err) => res("err"));
 });
+
+
+
+router.post('/tourist/addHotelFav', function (req, res, next) {
+  console.log(req.body);
+  HotelFav.create(req.body)
+      .then((hotel) => {
+          console.log('User has been Added ', hotel);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json');
+          res.json(hotel);
+          
+      }, (err) => next(err))
+      .catch((err) => res("err"));
+});
+
+
+router.post('/tourist/addRestaurantFav', function (req, res, next) {
+  console.log(req.body);
+ RestaurantFav.create(req.body)
+      .then((hotel) => {
+          console.log('User has been Added ', hotel);
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json');
+          res.json(hotel);
+          
+      }, (err) => next(err))
+      .catch((err) => res("err"));
+});
+
 
 module.exports = router;

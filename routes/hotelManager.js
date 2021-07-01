@@ -17,6 +17,9 @@ var tourManager = require('./tourManager')
  var restaurantManager = require('./restaurantManager')
  var transportManager = require('./transportManager')
 
+ 
+
+
 // Setting up basic middleware for all Express requests
 router.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
 router.use(bodyParser.json()); // Send JSON responses
@@ -122,6 +125,17 @@ router.delete("/hotel/bookingCancel/:bookingId", function (req, res, next) {
     }
     res.json(results); }
     ); });
+
+
+
+router.delete("/hotel/delete/:Id", function (req, res, next) {
+    Hotel.deleteOne(
+   { _id: req.params.Id}, function (error, results) {
+   if (error) {
+   return next(error);
+   }
+   res.json(results); }
+   ); });
 
 
 router.get('/hotel/bookings/:hotelManagerId', function (req, res, next) {

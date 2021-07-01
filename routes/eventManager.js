@@ -2,8 +2,6 @@ var express = require('express');
 var router = express();
 
 
-const uri = "mongodb+srv://user:user@cluster0.hbwmf.mongodb.net/Travler?retryWrites=true&w=majority";
-const mongoose = require("mongoose");
 const Events = require('../models/event');
 const EventBookings = require('../models/eventbookings');
 
@@ -11,19 +9,7 @@ var EventManager = require('../models/eventManager')
 
 var cors = require('cors')
 var bodyParser = require('body-parser');
-mongoose.connect(uri, { useNewUrlParser: true }, function (err) {
-    if (err) {
-        throw err;
-    }
-    else{
-        console.log("connection established");
-    }
-});
-router.listen(5556, (err) => {
-    if (err)
-        throw err;
-    
-});
+
 
 router.get('/getEventsByEventManager:/:id', function(req, res, next) {
     Events.find({EventManager : req.params.id})
