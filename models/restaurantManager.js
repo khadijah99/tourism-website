@@ -10,20 +10,15 @@ var restaurantManagerSchema = new Schema({
   email: {
     type: String,
     required: true,
-    index: true,
-    unique: true
-    ,
-    password : {
-      type: String,
-    required: true,
-    index: true,
-    }
+    unique : true
+  },
+  password : {
+      type :String,
+      required : true,
   },
   address: {
     type: String,
-    required: true,
-   
-
+  
   },
 });
 

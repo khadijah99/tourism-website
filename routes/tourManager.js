@@ -85,20 +85,20 @@ router.post('/addmenu', function(req, res, next) {
         .catch((err) => next(err));
 });
 
-router.post('/restaurantManager/login', function (req, res, next) {
-    var email = req.body.email
-    var pass = req.body.email
-    TourManager.find({ email: email, password: pass }).exec(function (error, results) {
-        if (error) {
-            return next(error);
-        }
-        // Respond with valid data
-        res.json(results);
-    }
-    )
-}
+// router.post('/restaurantManager/login', function (req, res, next) {
+//     var email = req.body.email
+//     var pass = req.body.email
+//     TourManager.find({ email: email, password: pass }).exec(function (error, results) {
+//         if (error) {
+//             return next(error);
+//         }
+//         // Respond with valid data
+//         res.json(results);
+//     }
+//     )
+// }
 
-);
+// );
 
 router.post('/tourManager/reg', function (req, res, next) {
     console.log(req.body);
