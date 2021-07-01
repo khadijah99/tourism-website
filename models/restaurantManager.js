@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-var uniqueValidator = require('mongoose-unique-validator');
 
 var Schema = mongoose.Schema;
 var restaurantManagerSchema = new Schema({
@@ -12,12 +11,12 @@ var restaurantManagerSchema = new Schema({
     required: true,
     index: true,
     unique: true
-    ,
-    password : {
+  },
+  password : {
       type: String,
     required: true,
-    index: true,
-    }
+    
+    
   },
   address: {
     type: String,
@@ -27,8 +26,7 @@ var restaurantManagerSchema = new Schema({
   },
 });
 
-restaurantManagerSchema.plugin(uniqueValidator);
-const Foo = mongoose.model("RestaurantManager", restaurantManagerSchema);
 
 
-module.exports = Foo ;
+
+module.exports = mongoose.model("RestaurantManager", restaurantManagerSchema);
