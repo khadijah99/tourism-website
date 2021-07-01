@@ -93,6 +93,17 @@ router.get('/hotelrooms/:id', function (req, res, next) {
 });
 
 
+router.get('/hotelroomsByHotelId/:id', function (req, res, next) {
+    Room.find({ hotel: req.params.id }).sort('number').exec(function (error, results) {
+        if (error) {
+            return next(error);
+        }
+        // Respond with valid data
+        res.json(results);
+    });
+});
+
+
 router.get('/hotel/bookings/:hotelId', function (req, res, next) {
     HotelBooking.find({ hotelId: req.params.hotelId }).sort('number').exec(function (error, results) {
         if (error) {

@@ -21,6 +21,13 @@ var hotelSchema = new schema({
         required: true
     },
 
+    features :  [
+        {
+            type: String,
+            required: true
+        }
+    ],   
+
     images : [
         {
             type: String,
