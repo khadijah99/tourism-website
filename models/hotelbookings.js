@@ -10,7 +10,7 @@ var hotelBookingsSchema = new schema({
     },
     date: {
         type: String,
-        required: true
+       
     },
     customerId : {
         type : mongoose.Types.ObjectId,
