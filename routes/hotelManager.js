@@ -210,9 +210,9 @@ router.post('/hotelManager/login', function (req, res, next) {
     // Respond with valid data
     res.setHeader('Content-Type', 'application/json')
     /////var token = jwt.sign({ _id: results._id }, secret, { expiresIn: "24h" })
-    var token = jwt.createAccessToken({ id, password, role })
-    res.send({ id, token, role })
-    res.json(results)
+  //  var token = jwt.createAccessToken({ id, password, role })
+  //  res.send({ id, token, role })
+   res.json(results)
   })
 })
 
