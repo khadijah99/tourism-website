@@ -18,6 +18,10 @@ var transportSchema = new Schema({
     type: String,
     required: true
   },
+  images :[{
+    type : String
+  }],
+  
   city: {
     type: String,
     required: true

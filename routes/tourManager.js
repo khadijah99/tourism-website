@@ -11,6 +11,7 @@ var PackageHotel = require('../models/tourPackageHotels')
 var PackageRestaurant = require('../models/tourPackageRestaurants')
 var Event = require('../models/event')
 var PackageEvent = require('../models/tourPackageEvent')
+var Transport = require('../models/transport')
 
 router.get('/', function (req, res, next) {
   res.send('respond with a resource')
@@ -161,6 +162,19 @@ router.get('/getToursByManagerId/:id', function (req, res, next) {
     .catch(err => next(err))
 })
 
+
+router.get('/getAllTravelOptions', function (req, res, next) {
+  Transport.find({  })
+    .then(
+      results => {
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json')
+        res.json(results)
+      },
+      err => next(err)
+    )
+    .catch(err => next(err))
+})
 router.get('/tourPackage/bookings/:Id', function (req, res, next) {
   RestaurantBooking.find({ restaurant: req.params.Id }).exec(function (
     error,
