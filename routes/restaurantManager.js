@@ -103,17 +103,17 @@ router.post('/addmenu', function (req, res, next) {
 router.post('/restaurantManager/login', function (req, res, next) {
   var email = req.body.email
   var pass = req.body.password
-  console.log(email)
-  console.log(pass)
-  RestaurantManager.find({ email: email, password: pass })
-    .exec(function (error, results) {
-      if (error) {
-        return next(error)
-      }
-      // Respond with valid data
-      res.json(results)
-    })
-    .catch(err => next(err))
+
+  RestaurantManager.find({ email: email, password: pass }).exec(function (
+    error,
+    results
+  ) {
+    if (error) {
+      return next(error)
+    }
+    // Respond with valid data
+    res.json(results)
+  })
 })
 
 router.post('/addTable', function (req, res, next) {
