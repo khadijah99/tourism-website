@@ -111,17 +111,17 @@ router.get('/hotelroomsByHotelId/:id', function (req, res, next) {
     })
 })
 
-router.get('/hotel/bookings/:hotelId', function (req, res, next) {
-  HotelBooking.find({ hotelId: req.params.hotelId })
-    .sort('number')
-    .exec(function (error, results) {
-      if (error) {
-        return next(error)
-      }
-      // Respond with valid data
-      res.json(results)
-    })
-})
+// router.get('/hotel/bookings/:hotelId', function (req, res, next) {
+//   HotelBooking.find({ hotelId: req.params.hotelId })
+//     .sort('number')
+//     .exec(function (error, results) {
+//       if (error) {
+//         return next(error)
+//       }
+//       // Respond with valid data
+//       res.json(results)
+//     })
+// })
 
 router.delete('/hotel/bookingCancel/:bookingId', function (req, res, next) {
   HotelBooking.deleteOne({ _id: req.params.bookingId }, function (
@@ -146,7 +146,7 @@ router.delete('/hotel/delete/:Id', function (req, res, next) {
 
 router.get('/hotel/bookings/:hotelManagerId', function (req, res, next) {
   HotelBooking.find({ hotelManager: req.params.hotelManagerId })
-    .sort('number')
+   
     .exec(function (error, results) {
       if (error) {
         return next(error)
