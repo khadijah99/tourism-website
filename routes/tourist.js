@@ -8,6 +8,7 @@ const Events = require('../models/event')
 const Tourist = require('../models/tourist')
 var HotelFav = require('../models/favoriteHotel')
 var RestaurantFav = require('../models/favoriteRestaurant')
+var TourPackage  = require('../models/tourpackage')
 
 /* GET users listing. */
 router.get('/hotelsAll', function (req, res, next) {
@@ -20,7 +21,20 @@ router.get('/hotelsAll', function (req, res, next) {
   })
 })
 
-router.get('/hotel/bookings/:customerId', function (req, res, next) {
+router.get('/tourPackagesAll', function (req, res, next) {
+  TourPackage.find({  })
+  .then(
+    results => {
+      res.statusCode = 200
+      res.setHeader('Content-Type', 'application/json')
+      res.json(results)
+    },
+    err => next(err)
+  )
+  .catch(err => next(err))
+})
+
+router.get('/hotel/Customerbookings/:customerId', function (req, res, next) {
   HotelBooking.find({ customerId: req.params.customerId })
     .sort('number')
     .exec(function (error, results) {
