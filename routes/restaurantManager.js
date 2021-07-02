@@ -11,7 +11,7 @@ const mongoose = require('mongoose')
 
 //GET Operations
 router.get('/getrestaurantByManagerId/:id', function (req, res, next) {
-  Restaurant.find({ restaurantManager: req.params.id })
+  Restaurant.find({ restaurant: req.params.id })
     .then(
       results => {
         res.statusCode = 200
