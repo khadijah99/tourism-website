@@ -18,9 +18,6 @@ var restaurantManager = require('./restaurantManager')
 var transportManager = require('./transportManager')
 var eventManager = require('./eventManager')
 
- 
-
-
 // Setting up basic middleware for all Express requests
 router.use(bodyParser.urlencoded({ extended: false })) // Parses urlencoded bodies
 router.use(bodyParser.json()) // Send JSON responses
@@ -138,16 +135,14 @@ router.delete('/hotel/bookingCancel/:bookingId', function (req, res, next) {
   })
 })
 
-
-router.delete("/hotel/delete/:Id", function (req, res, next) {
-    Hotel.deleteOne(
-   { _id: req.params.Id}, function (error, results) {
-   if (error) {
-   return next(error);
-   }
-   res.json(results); }
-   ); });
-
+router.delete('/hotel/delete/:Id', function (req, res, next) {
+  Hotel.deleteOne({ _id: req.params.Id }, function (error, results) {
+    if (error) {
+      return next(error)
+    }
+    res.json(results)
+  })
+})
 
 router.get('/hotel/bookings/:hotelManagerId', function (req, res, next) {
   HotelBooking.find({ hotelManager: req.params.hotelManagerId })
@@ -210,8 +205,8 @@ router.post('/hotelManager/login', function (req, res, next) {
     // Respond with valid data
     res.setHeader('Content-Type', 'application/json')
     /////var token = jwt.sign({ _id: results._id }, secret, { expiresIn: "24h" })
-    var token = jwt.createAccessToken({ id, password, role })
-    res.send({ id, token, role })
+    //var token = jwt.createAccessToken({ id, password, role })
+    //res.send({ id, token, role })
     res.json(results)
   })
 })

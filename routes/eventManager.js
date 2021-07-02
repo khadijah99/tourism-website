@@ -6,6 +6,7 @@ var EventManager = require('../models/eventManager')
 
 var cors = require('cors')
 var bodyParser = require('body-parser')
+var jwt = require('./jwt_configuration')
 
 //GET Operations
 router.get('/geteventsByManagerId/:id', function (req, res, next) {
@@ -84,7 +85,11 @@ router.post('/eventManager/login', function (req, res, next) {
     if (error) {
       return next(error)
     }
-    // Respond with valid data
+    // Create token
+    // var token = jwt.createAccessToken({
+    //   uid: results._id,
+    //   role: 'eventManager'
+    // })
     res.setHeader('Content-Type', 'application/json')
     res.json(results)
   })
@@ -123,6 +128,45 @@ router.put('/editEvent/:eventId', (req, res, next) => {
     }
   )
 })
+
+// app.put('/editEvent/:eventId/:eventManagerId', (req, res, next) => {
+//   var eventID = req.params.eventId
+//   var auth = req.headers.authorization
+//   console.log(req.body)
+//   jwt.decodeToken(auth, (err, decodedKey) => {
+//     if (err) {
+//       console.log(err)
+//       resStatusAndMessage(res, 400, err)
+//     } else {
+//       if (
+//         decodedKey.uid !== req.params.eventManagerId &&
+//         decodedKey.role !== 'Event Manager'
+//       ) {
+//         resStatusAndMessage(
+//           res,
+//           400,
+//           'You are not authorized to edit this document'
+//         )
+//       } else {
+//         Event.findByIdAndUpdate(
+//           req.params.eventId,
+
+//           req.body,
+
+//           (err, docs) => {
+//             if (err) {
+//               console.log(err)
+//               resStatusAndMessage(res, 500, err)
+//             } else {
+//               console.log(docs)
+//               res.json(docs)
+//             }
+//           }
+//         )
+//       }
+//     }
+//   })
+// })
 
 //Delete Operations
 router.delete('/events/deleteEvent/:eventId', function (req, res, next) {
